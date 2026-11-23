@@ -1,16 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
+  images: {
+    // Allows loading product images from any external domain (Unsplash, Pull&Bear, CDNs, Supabase, etc.)
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
       },
-    },
+      {
+        protocol: "http",
+        hostname: "**",
+      },
+    ],
   },
 };
 
