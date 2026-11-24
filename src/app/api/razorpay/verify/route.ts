@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     } = await request.json();
 
     const secret = process.env.RAZORPAY_KEY_SECRET;
-    const isMock = !secret || (razorpay_order_id && razorpay_order_id.startsWith('order_mock_'));
+    const isMock = !secret || secret.includes('your_razorpay') || (razorpay_order_id && razorpay_order_id.startsWith('order_mock_'));
 
     // 1. SIGNATURE VERIFICATION
     if (!isMock) {
